@@ -2,10 +2,16 @@ package jp.level_five.freshers.delivery;
 
 public class ClientData {
 
+	private char shippingMethod;
 	private int postalCode;
 
-	public void checkDataOfArrival(char dataOfArrival) {
-		switch (dataOfArrival) {
+	public ClientData(char shippingMethod, int postalCode, int dateOfArrival, String timeZone) {
+		this.shippingMethod = shippingMethod;
+		checkShippingMethod();
+	}
+	
+	public void checkShippingMethod() {
+		switch (shippingMethod) {
 		case 'A':
 		case 'a':
 		case 'B':
@@ -14,7 +20,10 @@ public class ClientData {
 		default:
 			throw new RuntimeException("そのサービスは存在しません。");
 		}
-
+	}
+	
+	public char getShippingMethod() {
+		return shippingMethod;
 	}
 
 	public void checkPostalCode(int postalCode) {
