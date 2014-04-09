@@ -22,9 +22,15 @@ public class ClientDataTest {
 	public void testchar型XをcheckDataOfArrivalに渡すと例外が発生する() {
 		clientData.checkDataOfArrival('X');
 	}
+	
 	@Test
 	public void testchar型bをcheckDataOfArrivalに渡すと例外が発生しない(){
 		clientData.checkDataOfArrival('b');
+	}
+	
+	@Test(expected=RuntimeException.class)
+	public void testchar型1をcheckDataOfArrivalに渡すと例外が発生する(){
+		clientData.checkDataOfArrival('1');
 	}
 
 }
