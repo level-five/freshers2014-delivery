@@ -12,10 +12,13 @@ public class ClientData {
 	
 	public void checkShippingMethod() {
 		switch (shippingMethod) {
-		case 'A':
 		case 'a':
-		case 'B':
+			shippingMethod = 'A';
+			break;
 		case 'b':
+			shippingMethod = 'B';
+		case 'A':
+		case 'B':
 			break;
 		default:
 			throw new RuntimeException("そのサービスは存在しません。");
