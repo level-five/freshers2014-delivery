@@ -37,5 +37,11 @@ public class ClientDataTest {
 	public void testchar型アンドをcheckDataOfArrivalに渡すと例外が発生する() {
 		clientData.checkDataOfArrival('＆');
 	}
+	
+	@Test
+	public void test郵便番号が1234567ならばpostalCodeフィールドに1が入る() {
+		clientData.checkPostalCode(1234567);
+		assertTrue(clientData.getPostalCode() == 1);
+	}
 
 }
