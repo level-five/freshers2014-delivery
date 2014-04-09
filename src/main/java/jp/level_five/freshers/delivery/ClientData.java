@@ -18,11 +18,14 @@ public class ClientData {
 	}
 
 	public void checkPostalCode(int postalCode) {
-
+		this.postalCode = postalCode / 1000000;
+		
+		if ((this.postalCode < 1) | (9 < this.postalCode))
+			throw new RuntimeException("不正な郵便番号です。");
 	}
 
 	public int getPostalCode() {
-		return 1;
+		return postalCode;
 	}
 
 }

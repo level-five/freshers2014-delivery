@@ -39,9 +39,15 @@ public class ClientDataTest {
 	}
 	
 	@Test
-	public void test郵便番号が1234567ならばpostalCodeフィールドに1が入る() {
+	public void test郵便番号が1234567ならばgetPostalCodeから1が返る() {
 		clientData.checkPostalCode(1234567);
 		assertTrue(clientData.getPostalCode() == 1);
 	}
+	@Test
+	public void test郵便番号9876543ならばgetPostalCodeから9が返る(){
+		clientData.checkPostalCode(9876543);
+		assertTrue(clientData.getPostalCode() == 9);
+	}
+	
 
 }
