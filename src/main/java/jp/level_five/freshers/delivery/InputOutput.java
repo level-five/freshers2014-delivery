@@ -54,4 +54,16 @@ public class InputOutput {
 		return inputTimeZone;
 	}
 
-};
+	public int inputMode() {
+		printStream.format("使用したい機能を選択してください。\n 1: サービスの一覧を表示\n 2: 指定日時に届く発送日を調べる\n 3: 最も安い配送サービスを調べる");
+		Scanner mode = new Scanner(inputStream);
+		int inputMode = mode.nextInt();
+		mode.close();
+
+		return inputMode;
+	}
+
+	public void output(String output) {
+		printStream.format(output);
+	}
+}
