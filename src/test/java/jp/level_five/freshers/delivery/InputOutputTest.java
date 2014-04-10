@@ -42,5 +42,6 @@ public class InputOutputTest {
 		inputOutput.setInputStream(inputStream);
 		int input = inputOutput.inputPostalCode();
 		assertEquals(1000000, input);
+		assertEquals("—X•Ö”Ô†7Œ…‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B",outputStream.toString());
 	}
 }

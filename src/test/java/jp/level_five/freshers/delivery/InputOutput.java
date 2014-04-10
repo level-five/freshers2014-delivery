@@ -35,6 +35,7 @@ public class InputOutput {
 	}
 
 	public int inputPostalCode() {
+		printStream.format("—X•Ö”Ô†7Œ…‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
 		Scanner scan1 = new Scanner(inputStream);
 		int val = scan1.nextInt();
 		scan1.close();
