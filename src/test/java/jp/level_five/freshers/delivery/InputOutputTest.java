@@ -1,99 +1,115 @@
 package jp.level_five.freshers.delivery;
 
+
 import static org.junit.Assert.*;
+
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class InputOutputTest {
 	InputOutput inputOutput = null;
 	ByteArrayOutputStream outputStream = null;
 
+
 	@Before
 	public void before() {
 		inputOutput = new InputOutput();
+
 
 		outputStream = new ByteArrayOutputStream();
 		PrintStream printStream = new PrintStream(outputStream);
 		inputOutput.setPrintStream(printStream);
 	}
 
+
 	@Test
-	public void test•¶šA‚ğ“ü—Í‚·‚é‚Æ•¶šŒ^‚ÅA‚ª•Ô‚Á‚Ä‚­‚é() {
+	public void testæ–‡å­—Aã‚’å…¥åŠ›ã™ã‚‹ã¨æ–‡å­—å‹ã§AãŒè¿”ã£ã¦ãã‚‹() {
 		String inputString = "A";
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(
 				inputString.getBytes());
 		inputOutput.setInputStream(inputStream);
 
+
 		String input = inputOutput.inputShippingMethod();
 
+
 		assertEquals("A", input);
-		assertEquals("”z‘—•û–@‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢B@A@‚Ü‚½‚Í@B", outputStream.toString());
+		assertEquals("é…é€æ–¹æ³•ã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚ã€€Aã€€ã¾ãŸã¯ã€€B", outputStream.toString());
 	}
 
+
 	@Test
-	public void test—X•Ö”Ô†1000000‚ğ“ü—Í‚·‚é‚Æ1000000‚ª•Ô‚Á‚Ä‚­‚é() {
+	public void testéƒµä¾¿ç•ªå·1000000ã‚’å…¥åŠ›ã™ã‚‹ã¨1000000ãŒè¿”ã£ã¦ãã‚‹() {
 		String inputcode = "1000000";
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(
 				inputcode.getBytes());
 		inputOutput.setInputStream(inputStream);
 		int input = inputOutput.inputPostalCode();
 		assertEquals(1000000, input);
-		assertEquals("—X•Ö”Ô†7Œ…‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B", outputStream.toString());
+		assertEquals("éƒµä¾¿ç•ªå·7æ¡ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚", outputStream.toString());
 	}
 
+
 	@Test
-	public void test“’…“ú20140410‚ğ“ü—Í‚·‚é‚Æ20140410‚ª•Ô‚Á‚Ä‚­‚é() {
+	public void teståˆ°ç€æ—¥20140410ã‚’å…¥åŠ›ã™ã‚‹ã¨20140410ãŒè¿”ã£ã¦ãã‚‹() {
 		String inputArrival = "20140410";
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(
 				inputArrival.getBytes());
 		inputOutput.setInputStream(inputStream);
 		int input = inputOutput.inputArrivalDate();
 		assertEquals(20140410, input);
-		assertEquals("Šó–]‚³‚ê‚é“’…w’è“ú‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B@—áj20140410", outputStream.toString());
+		assertEquals("å¸Œæœ›ã•ã‚Œã‚‹åˆ°ç€æŒ‡å®šæ—¥ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚ã€€ä¾‹ï¼‰20140410", outputStream.toString());
 	}
 
+
 	@Test
-	public void test”z’Bw’èŠÔ‘Ñ‚Ì‘I‘ğŒß‘O‚ğ‘I‘ğ‚·‚é‚ÆŒß‘O‚ª•Ô‚Á‚Ä‚­‚é() {
-		String inputTimeZone = "Œß‘O";
+	public void testé…é”æŒ‡å®šæ™‚é–“å¸¯ã®é¸æŠåˆå‰ã‚’é¸æŠã™ã‚‹ã¨åˆå‰ãŒè¿”ã£ã¦ãã‚‹() {
+		String inputTimeZone = "åˆå‰";
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(
 				inputTimeZone.getBytes());
 		inputOutput.setInputStream(inputStream);
 		String input = inputOutput.inputTimeZone();
-		assertEquals("Œß‘O", input);
-		assertEquals("Šó–]‚³‚ê‚éŠÔ‘Ñ‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢BŒß‘OAŒßŒãA—[•û", outputStream.toString());
+		assertEquals("åˆå‰", input);
+		assertEquals("å¸Œæœ›ã•ã‚Œã‚‹æ™‚é–“å¸¯ã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚åˆå‰ã€åˆå¾Œã€å¤•æ–¹", outputStream.toString());
 	}
 
+
 	@Test
-	public void testg—p‚·‚é‹@”\‚P‚ğ‘I‚Ô‚Æ‚P‚ª•Ô‚Á‚Ä‚­‚é() {
+	public void testä½¿ç”¨ã™ã‚‹æ©Ÿèƒ½ï¼‘ã‚’é¸ã¶ã¨ï¼‘ãŒè¿”ã£ã¦ãã‚‹() {
 		String inputMode = "1";
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(
 				inputMode.getBytes());
+
 
 		inputOutput.setInputStream(inputStream);
 		int input = inputOutput.inputMode();
 		assertEquals(1, input);
 		assertEquals(
-				"g—p‚µ‚½‚¢‹@”\‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢B\n 1: ƒT[ƒrƒX‚Ìˆê——‚ğ•\¦\n 2: w’è“ú‚É“Í‚­”­‘—“ú‚ğ’²‚×‚é\n 3: Å‚àˆÀ‚¢”z‘—ƒT[ƒrƒX‚ğ’²‚×‚é",
+				"ä½¿ç”¨ã—ãŸã„æ©Ÿèƒ½ã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚\n 1: ã‚µãƒ¼ãƒ“ã‚¹ã®ä¸€è¦§ã‚’è¡¨ç¤º\n 2: æŒ‡å®šæ—¥æ™‚ã«å±Šãç™ºé€æ—¥ã‚’èª¿ã¹ã‚‹\n 3: æœ€ã‚‚å®‰ã„é…é€ã‚µãƒ¼ãƒ“ã‚¹ã‚’èª¿ã¹ã‚‹",
 				outputStream.toString());
 	}
-	
+
+
 	@Test
-	public void testoutputƒƒ\ƒbƒh‚ÉStringƒIƒuƒWƒFƒNƒg20140410‚ª“n‚³‚ê‚½‚Æ‚«‚Éo—Í‚·‚é(){
+	public void testoutputãƒ¡ã‚½ãƒƒãƒ‰ã«Stringã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ20140410ãŒæ¸¡ã•ã‚ŒãŸã¨ãã«å‡ºåŠ›ã™ã‚‹(){
 		String output ="20140410";
 		inputOutput.output(output);
 		assertEquals("20140410",outputStream.toString());
 	}
 	@Test
-	public void testoutputƒƒ\ƒbƒh‚ÉStringƒIƒuƒWƒFƒNƒg1330056‚ª“n‚³‚ê‚½‚Æ‚«‚Éo—Í‚·‚é() {
+	public void testoutputãƒ¡ã‚½ãƒƒãƒ‰ã«Stringã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ1330056ãŒæ¸¡ã•ã‚ŒãŸã¨ãã«å‡ºåŠ›ã™ã‚‹() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("1330056");
 		inputOutput.output(sb.toString());
 		assertEquals("1330056", outputStream.toString());
 	}
+
 
 }

@@ -23,7 +23,7 @@ public class InputOutput {
 	}
 
 	public String inputShippingMethod() {
-		printStream.format("”z‘—•û–@‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢B@A@‚Ü‚½‚Í@B");
+		printStream.format("é…é€æ–¹æ³•ã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚ã€€Aã€€ã¾ãŸã¯ã€€B");
 		Scanner shippingMethodScan = new Scanner(inputStream);
 		String inputShippingMethod = shippingMethodScan.next();
 		shippingMethodScan.close();
@@ -31,7 +31,7 @@ public class InputOutput {
 	}
 
 	public int inputPostalCode() {
-		printStream.format("—X•Ö”Ô†7Œ…‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+		printStream.format("éƒµä¾¿ç•ªå·7æ¡ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
 		Scanner postalScan = new Scanner(inputStream);
 		int inputPostalCode = postalScan.nextInt();
 		postalScan.close();
@@ -39,7 +39,7 @@ public class InputOutput {
 	}
 
 	public int inputArrivalDate() {
-		printStream.format("Šó–]‚³‚ê‚é“’…w’è“ú‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B@—áj20140410");
+		printStream.format("å¸Œæœ›ã•ã‚Œã‚‹åˆ°ç€æŒ‡å®šæ—¥ã‚’å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚ã€€ä¾‹ï¼‰20140410");
 		Scanner arrivalDateScan = new Scanner(inputStream);
 		int inputArrivalDate = arrivalDateScan.nextInt();
 		arrivalDateScan.close();
@@ -47,7 +47,7 @@ public class InputOutput {
 	}
 
 	public String inputTimeZone() {
-		printStream.format("Šó–]‚³‚ê‚éŠÔ‘Ñ‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢BŒß‘OAŒßŒãA—[•û");
+		printStream.format("å¸Œæœ›ã•ã‚Œã‚‹æ™‚é–“å¸¯ã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚åˆå‰ã€åˆå¾Œã€å¤•æ–¹");
 		Scanner timeZoneScan = new Scanner(inputStream);
 		String inputTimeZone = timeZoneScan.next();
 		timeZoneScan.close();
@@ -55,7 +55,7 @@ public class InputOutput {
 	}
 
 	public int inputMode() {
-		printStream.format("g—p‚µ‚½‚¢‹@”\‚ğ‘I‘ğ‚µ‚Ä‚­‚¾‚³‚¢B\n 1: ƒT[ƒrƒX‚Ìˆê——‚ğ•\¦\n 2: w’è“ú‚É“Í‚­”­‘—“ú‚ğ’²‚×‚é\n 3: Å‚àˆÀ‚¢”z‘—ƒT[ƒrƒX‚ğ’²‚×‚é");
+		printStream.format("ä½¿ç”¨ã—ãŸã„æ©Ÿèƒ½ã‚’é¸æŠã—ã¦ãã ã•ã„ã€‚\n 1: ã‚µãƒ¼ãƒ“ã‚¹ã®ä¸€è¦§ã‚’è¡¨ç¤º\n 2: æŒ‡å®šæ—¥æ™‚ã«å±Šãç™ºé€æ—¥ã‚’èª¿ã¹ã‚‹\n 3: æœ€ã‚‚å®‰ã„é…é€ã‚µãƒ¼ãƒ“ã‚¹ã‚’èª¿ã¹ã‚‹");
 		Scanner mode = new Scanner(inputStream);
 		int inputMode = mode.nextInt();
 		mode.close();
