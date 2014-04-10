@@ -4,10 +4,15 @@ public class ClientData {
 
 	private String shippingMethod;
 	private int postalCode;
+	private int dateOfArrival;
 
 	public ClientData(String shippingMethod, int postalCode, int dateOfArrival, String timeZone) {
 		this.shippingMethod = shippingMethod;
 		checkShippingMethod();
+		this.postalCode = postalCode;
+		checkPostalCode();
+		this.dateOfArrival = dateOfArrival;
+		checkDateOfArrival();
 	}
 	
 	public void checkShippingMethod() {
@@ -26,15 +31,36 @@ public class ClientData {
 		return shippingMethod;
 	}
 
-	public void checkPostalCode(int postalCode) {
-		this.postalCode = postalCode / 1000000;
-		
+	public void checkPostalCode() {
+		postalCode = postalCode / 1000000;
 		if ((this.postalCode < 1) | (9 < this.postalCode))
 			throw new RuntimeException("不正な郵便番号です。");
 	}
 
 	public int getPostalCode() {
 		return postalCode;
+	}
+	
+	public void checkDateOfArrival() {
+		int dateCheck = dateOfArrival / 10000000;
+		if ((dateCheck < 1) | (2 < dateCheck))
+			throw new RuntimeException("不正な到着日です。");		
+	}
+
+
+	public int getDateOfArrival() {
+		return dateOfArrival;
+	}
+
+	public boolean isLeapYear() {
+		if ((dateOfArrival / 10000) % 400 == 0)
+			return true;
+		if ((dateOfArrival / 10000) % 100 == 0)
+			return false;
+		if ((dateOfArrival / 10000) % 4 == 0)
+			return true;
+		
+		return false;
 	}
 
 }

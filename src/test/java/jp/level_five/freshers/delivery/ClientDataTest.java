@@ -38,4 +38,50 @@ public class ClientDataTest {
 		clientData = new ClientData("", 1234567, 12345678, "午前");
 		assertEquals("", clientData.getShippingMethod());
 	}
+
+	@Test
+	public void testインスタンス化時の引数がAと1234567と12345678と午前のときgetPostalCodeで1が返る() {
+		clientData = new ClientData("A", 1234567, 12345678, "午前");
+		assertEquals(clientData.getPostalCode(), 1);
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void testインスタンス化時の引数がAと12345678と12345678と午前のときgetPostalCodeで例外が発生する() {
+		clientData = new ClientData("A", 12345678, 12345678, "午前");
+	}
+	
+	@Test(expected = RuntimeException.class)
+	public void testインスタンス化時の引数がAと987654と12345678と午前のときgetPostalCodeで例外が発生する() {
+		clientData = new ClientData("A", 987654, 12345678, "午前");
+	}
+	@Test
+	public void testインスタンス化時の引数がAと1234567と12345678と午前のときgetDateOfArrivalで12345678が返ってくる() {
+		clientData = new ClientData("A", 1234567, 12345678, "午前");
+		assertEquals(12345678, clientData.getDateOfArrival());
+	}
+	@Test(expected = RuntimeException.class)
+	public void testインスタンス化時の引数がAと1234567と123456789と午前のとき例外が発生する() {
+		clientData = new ClientData("A", 1234567, 123456789, "午前");
+	}
+	@Test
+	public void testインスタンス化時の引数がAと1234567と20160229と午前のときisLeapYearはtrueを返す() {
+		clientData = new ClientData("A", 1234567, 20160229, "午前");
+		assertTrue(clientData.isLeapYear());
+	}
+	@Test
+	public void testインスタンス化時の引数がAと1234567と21000228と午前のときisLeapYearはtrueを返す() {
+		clientData = new ClientData("A", 1234567, 21000228, "午前");
+		assertFalse(clientData.isLeapYear());
+	}
+	@Test
+	public void testインスタンス化時の引数がAと1234567と20000228と午前のときisLeapYearはtrueを返す() {
+		clientData = new ClientData("A", 1234567, 20000228, "午前");
+		assertTrue(clientData.isLeapYear());
+	}
+	@Test
+	public void testインスタンス化時の引数がAと1234567と20140228と午前のときisLeapYearはtrueを返す() {
+		clientData = new ClientData("A", 1234567, 20000228, "午前");
+		assertTrue(clientData.isLeapYear());
+	}
+
 }
