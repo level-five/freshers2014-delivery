@@ -99,5 +99,23 @@ public class ClientDataTest {
 	public void testインスタンス化時の引数がAと1234567と20140431と午前のとき例外が発生する() {
 		clientData = new ClientData("A", 1234567, 20140431, "午前");
 	}
-	
+	@Test
+	public void testインスタンス化時の引数がAと1234567と20140410と午前のときgetTimeZoneは午前を返す() {
+		clientData = new ClientData("A", 1234567, 20140410, "午前");
+		assertEquals(clientData.getTimeZone(), "午前");
+	}
+	@Test
+	public void testインスタンス化時の引数がAと1234567と20140410と午後のときgetTimeZoneは午後を返す() {
+		clientData = new ClientData("A", 1234567, 20140410, "午後");
+		assertEquals(clientData.getTimeZone(), "午後");
+	}
+	@Test
+	public void testインスタンス化時の引数がAと1234567と20140410と夕方のときgetTimeZoneは夕方を返す() {
+		clientData = new ClientData("A", 1234567, 20140410, "夕方");
+		assertEquals(clientData.getTimeZone(), "夕方");
+	}
+	@Test(expected = RuntimeException.class)
+	public void testインスタンス化時の引数がAと1234567と20140410と深夜のとき例外が発生する() {
+		clientData = new ClientData("A", 1234567, 20140410, "深夜");
+	}
 }

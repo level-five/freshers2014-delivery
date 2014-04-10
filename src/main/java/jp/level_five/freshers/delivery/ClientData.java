@@ -5,6 +5,7 @@ public class ClientData {
 	private String shippingMethod;
 	private int postalCode;
 	private int dateOfArrival;
+	private String timeZone;
 
 	public ClientData(String shippingMethod, int postalCode, int dateOfArrival, String timeZone) {
 		this.shippingMethod = shippingMethod;
@@ -13,6 +14,8 @@ public class ClientData {
 		checkPostalCode();
 		this.dateOfArrival = dateOfArrival;
 		checkDateOfArrival();
+		this.timeZone = timeZone;
+		checkTimeZone();
 	}
 	
 	public void checkShippingMethod() {
@@ -51,7 +54,10 @@ public class ClientData {
 			throw new RuntimeException();
 		
 		int arrivalDay = Integer.parseInt(Integer.toString(dateOfArrival).substring(6, 8));
+		checkArrivalDay(arrivalMonth, arrivalDay);
+	}
 
+	private void checkArrivalDay(int arrivalMonth, int arrivalDay) {
 		switch (arrivalMonth) {
 		case 1: case 3: case 5: case 7:
 		case 8: case 10: case 12:
@@ -72,7 +78,6 @@ public class ClientData {
 				throw new RuntimeException("その日は存在しません。");
 			break;
 		}
-
 	}
 
 
@@ -91,6 +96,15 @@ public class ClientData {
 			return true;
 		
 		return false;
+	}
+
+	public void checkTimeZone(){
+		if(!(timeZone.equals("午前"))&&!(timeZone.equals("午後"))&&!(timeZone.equals("夕方")))
+			throw new RuntimeException();
+	}
+
+	public String getTimeZone() {
+		return timeZone;
 	}
 
 }
