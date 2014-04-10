@@ -45,6 +45,34 @@ public class ClientData {
 		int dateCheck = dateOfArrival / 10000000;
 		if ((dateCheck < 1) | (2 < dateCheck))
 			throw new RuntimeException("不正な到着日です。");		
+
+		int arrivalMonth = Integer.parseInt(Integer.toString(dateOfArrival).substring(4, 6));
+		if(arrivalMonth == 0  || 12 < arrivalMonth)
+			throw new RuntimeException();
+		
+		int arrivalDay = Integer.parseInt(Integer.toString(dateOfArrival).substring(6, 8));
+
+		switch (arrivalMonth) {
+		case 1: case 3: case 5: case 7:
+		case 8: case 10: case 12:
+			if(arrivalDay == 0  || 31 < arrivalDay)
+				throw new RuntimeException("その日は存在しません。");
+			break;
+		case 2:
+			if(isLeapYear()){
+				if(arrivalDay == 0  || 29 < arrivalDay)
+					throw new RuntimeException("その日は存在しません。");				
+			}else{
+				if(arrivalDay == 0  || 28 < arrivalDay)
+					throw new RuntimeException("その日は存在しません。");
+			}
+			break;	
+		case 4: case 6: case 9: case 11:
+			if(arrivalDay == 0  || 30 < arrivalDay)
+				throw new RuntimeException("その日は存在しません。");
+			break;
+		}
+
 	}
 
 
@@ -53,11 +81,13 @@ public class ClientData {
 	}
 
 	public boolean isLeapYear() {
-		if ((dateOfArrival / 10000) % 400 == 0)
+		int arrivalYear = Integer.parseInt(Integer.toString(dateOfArrival).substring(0, 4));
+		
+		if (arrivalYear % 400 == 0)
 			return true;
-		if ((dateOfArrival / 10000) % 100 == 0)
+		if (arrivalYear % 100 == 0)
 			return false;
-		if ((dateOfArrival / 10000) % 4 == 0)
+		if (arrivalYear % 4 == 0)
 			return true;
 		
 		return false;
