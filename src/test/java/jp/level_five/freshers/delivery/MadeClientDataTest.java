@@ -13,40 +13,40 @@ public class MadeClientDataTest {
 	}
 
 	@Test
-	public void test”z‘—•û–@‚Í‰Šú’l‚Å‚Í‹ó”’‚ª“ü‚Á‚Ä‚¢‚é() {
+	public void testé…é€æ–¹æ³•ã¯åˆæœŸå€¤ã§ã¯ç©ºç™½ãŒå…¥ã£ã¦ã„ã‚‹() {
 		char a = madeClientData.shippingmethod;
 		assertEquals(a, ' ');
 	}
 
 	@Test
-	public void test—X•Ö”Ô†‚Ì‰Šú’l‚Í‚O‚ª“ü‚Á‚Ä‚¢‚é() {
+	public void testéƒµä¾¿ç•ªå·ã®åˆæœŸå€¤ã¯ï¼ãŒå…¥ã£ã¦ã„ã‚‹() {
 		int b = madeClientData.postalCode;
 		assertEquals(b, 0);
 	}
 	@Test
-	public void test“’…“ú‚Ì‰Šú’l‚Í‚O‚ª“ü‚Á‚Ä‚¢‚é() {
+	public void teståˆ°ç€æ—¥ã®åˆæœŸå€¤ã¯ï¼ãŒå…¥ã£ã¦ã„ã‚‹() {
 		int c = madeClientData.dataOfArrival;
 		assertEquals(c, 0);
 	}
 	@Test
-	public void testŠÔ‘Ñ‚Ì‰Šú’l‚Í‚O‚ª“ü‚Á‚Ä‚¢‚é() {
+	public void testæ™‚é–“å¸¯ã®åˆæœŸå€¤ã¯ï¼ãŒå…¥ã£ã¦ã„ã‚‹() {
 		int d = madeClientData.timeZone;
 		assertEquals(d, 0);
 	}
 	@Test
-	public void test”z‘—•û–@‚É•¶š‚ÌA‚ğƒZƒbƒg‚·‚é‚±‚Æ‚ª‚Å‚«‚é(){
+	public void testé…é€æ–¹æ³•ã«æ–‡å­—ã®Aã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã“ã¨ãŒã§ãã‚‹(){
 		madeClientData.setShippingMethod('A');
 		char c = madeClientData.shippingmethod;
 		assertEquals(c, 'A');
 	}
 	@Test
-	public void test—X•Ö”Ô†‚É”š‚Ì1000000‚ğƒZƒbƒg‚·‚é‚±‚Æ‚ª‚Å‚«‚é(){
+	public void testéƒµä¾¿ç•ªå·ã«æ•°å­—ã®1000000ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã“ã¨ãŒã§ãã‚‹(){
 		madeClientData.setpostalCode(1000000);
 		int b = madeClientData.postalCode;
 		assertEquals(b, 1000000);
 	}
 	@Test
-	public void test“’…“ú‚É”š‚Ì20140411‚ğƒZƒbƒg‚·‚é‚±‚Æ‚ª‚Å‚«‚é(){
+	public void teståˆ°ç€æ—¥ã«æ•°å­—ã®20140411ã‚’ã‚»ãƒƒãƒˆã™ã‚‹ã“ã¨ãŒã§ãã‚‹(){
 		madeClientData.setdataOfArrival(20140411);
 		assertEquals(madeClientData.dataOfArrival, 20140411);
 	}
