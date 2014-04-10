@@ -24,31 +24,34 @@ public class InputOutput {
 
 	public String inputShippingMethod() {
 		printStream.format("配送方法を選択してください。　A　または　B");
-
-		Scanner scan = new Scanner(inputStream);
-		String val = scan.next();
-		System.out.println(val);
-		// System.out.println("配送方法を選んでください");
-		// char[] input = val.toCharArray();
-		// System.out.println(input[0]);
-		scan.close();
-		return val;
+		Scanner shippingMethodScan = new Scanner(inputStream);
+		String inputShippingMethod = shippingMethodScan.next();
+		shippingMethodScan.close();
+		return inputShippingMethod;
 	}
 
 	public int inputPostalCode() {
 		printStream.format("郵便番号7桁を入力してください。");
-		Scanner scan1 = new Scanner(inputStream);
-		int val = scan1.nextInt();
-		scan1.close();
-		return val;
+		Scanner postalScan = new Scanner(inputStream);
+		int inputPostalCode = postalScan.nextInt();
+		postalScan.close();
+		return inputPostalCode;
 	}
 
 	public int inputArrivalDate() {
 		printStream.format("希望される到着指定日を入力してください。　例）20140410");
-		Scanner scan1 = new Scanner(inputStream);
-		int val = scan1.nextInt();
-		scan1.close();
-		return val;
+		Scanner arrivalDateScan = new Scanner(inputStream);
+		int inputArrivalDate = arrivalDateScan.nextInt();
+		arrivalDateScan.close();
+		return inputArrivalDate;
+	}
+
+	public String inputTimeZone() {
+		printStream.format("希望される時間帯を選択してください。午前、午後、夕方");
+		Scanner timeZoneScan = new Scanner(inputStream);
+		String inputTimeZone = timeZoneScan.next();
+		timeZoneScan.close();
+		return inputTimeZone;
 	}
 
 };

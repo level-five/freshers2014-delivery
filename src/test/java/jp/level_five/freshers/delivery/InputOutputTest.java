@@ -54,4 +54,14 @@ public class InputOutputTest {
 		assertEquals(20140410, input);
 		assertEquals("希望される到着指定日を入力してください。　例）20140410",outputStream.toString());
 	}
+	
+	@Test
+	public void test配達指定時間帯の選択午前を選択すると午前が返ってくる(){
+		String inputTimeZone = "午前";
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(inputTimeZone.getBytes());
+		inputOutput.setInputStream(inputStream);
+		String input = inputOutput.inputTimeZone();
+		assertEquals("午前",input);
+		assertEquals("希望される時間帯を選択してください。午前、午後、夕方",outputStream.toString());
+	}
 }
