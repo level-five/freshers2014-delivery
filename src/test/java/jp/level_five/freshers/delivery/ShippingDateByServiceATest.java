@@ -70,4 +70,11 @@ public class ShippingDateByServiceATest {
 		String str = "2013年12月31日午前、2013年12月31日午後";
 		assertEquals(str, sb.toString());
 		}
+	@Test
+	public void test郵便番号が1で2014年1月1日午後が到着日のデータが入ったClientDataのオブジェクトを受け取って20131231午前と20131231午後で発送日を返す(){
+		ClientData clientData = new ClientData("A", 1000000, 20140101, "午後");
+		StringBuilder sb = service.sendShippingDate(clientData);
+		String str = "2013年12月31日午前、2013年12月31日午後";
+		assertEquals(str, sb.toString());	
+	}
 }
