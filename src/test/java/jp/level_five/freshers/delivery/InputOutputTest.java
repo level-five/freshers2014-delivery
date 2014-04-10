@@ -44,4 +44,14 @@ public class InputOutputTest {
 		assertEquals(1000000, input);
 		assertEquals("郵便番号7桁を入力してください。",outputStream.toString());
 	}
+	
+	@Test
+	public void test到着日20140410を入力すると20140410が返ってくる(){
+		String inputArrival = "20140410";
+		ByteArrayInputStream inputStream = new ByteArrayInputStream(inputArrival.getBytes());
+		inputOutput.setInputStream(inputStream);
+		int input = inputOutput.inputArrivalDate();
+		assertEquals(20140410, input);
+		assertEquals("希望される到着指定日を入力してください。　例）20140410",outputStream.toString());
+	}
 }
