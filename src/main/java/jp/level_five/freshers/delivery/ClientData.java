@@ -2,30 +2,27 @@ package jp.level_five.freshers.delivery;
 
 public class ClientData {
 
-	private char shippingMethod;
+	private String shippingMethod;
 	private int postalCode;
 
-	public ClientData(char shippingMethod, int postalCode, int dateOfArrival, String timeZone) {
+	public ClientData(String shippingMethod, int postalCode, int dateOfArrival, String timeZone) {
 		this.shippingMethod = shippingMethod;
 		checkShippingMethod();
 	}
 	
 	public void checkShippingMethod() {
+		shippingMethod = shippingMethod.toUpperCase();
 		switch (shippingMethod) {
-		case 'a':
-			shippingMethod = 'A';
-			break;
-		case 'b':
-			shippingMethod = 'B';
-		case 'A':
-		case 'B':
+		case "A":
+		case "B":
+		case "":
 			break;
 		default:
 			throw new RuntimeException("そのサービスは存在しません。");
 		}
 	}
 	
-	public char getShippingMethod() {
+	public String getShippingMethod() {
 		return shippingMethod;
 	}
 
