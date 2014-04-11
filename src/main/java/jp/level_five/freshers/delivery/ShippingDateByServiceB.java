@@ -88,7 +88,7 @@ public class ShippingDateByServiceB extends ShippingDateByServiceA {
 			return false;
 		}
 	}
-	public StringBuilder preSendShippingDate(int postalCode, int arrivalDate, String string) {
+	public String preSendShippingDate(int postalCode, int arrivalDate, String string) {
 		int[] arrival = {
 				arrivalDate / 10000,		//amYear
 				arrivalDate % 10000 / 100,	//amMonth
@@ -114,7 +114,7 @@ public class ShippingDateByServiceB extends ShippingDateByServiceA {
 		shippingDateServiceB.append(arrival[0] + "年"+ arrival[1]  + "月"+ arrival[2] + "日"+ "午前" + "、");
 		shippingDateServiceB.append(arrival[3] + "年"+ arrival[4]  + "月"+ arrival[5] + "日"+ "午後");
 
-		return shippingDateServiceB;
+		return shippingDateServiceB.toString();
 	}
 	
 	private void setShippingDateByCalendarSubstruction(int[] shippingDate, int amSubstructionNumber, int pmSubstructionNumber) {

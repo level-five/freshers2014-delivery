@@ -2,7 +2,7 @@ package jp.level_five.freshers.delivery;
 
 public class ShippingDateByServiceA {
 
-	public StringBuilder preSendShippingDate(int postalCode, int arrivalDate, String string) {
+	public String preSendShippingDate(int postalCode, int arrivalDate, String string) {
 		int[] shippingDate = new int[6];
 		shippingDate[0] = arrivalDate / 10000;//amYear
 		shippingDate[1] = arrivalDate % 10000 / 100;//amMonth
@@ -41,12 +41,12 @@ public class ShippingDateByServiceA {
 				shippingDate = convertPrevPmMonthDay(shippingDate);
 		} else {//郵便番号9のとき
 			sb.append("配送不可");
-			return sb;
+			return sb.toString();
 		}
 
 		sb.append(shippingDate[0] + "年"+ shippingDate[1]  + "月"+ shippingDate[2] + "日"+ "午前" + "、");
 		sb.append(shippingDate[3] + "年"+ shippingDate[4]  + "月"+ shippingDate[5] + "日"+ "午後");
-		return sb;
+		return sb.toString();
 	}
 
 	private int[] convertPrevAmMonthDay(int[] shippingDate) {
@@ -101,7 +101,7 @@ public class ShippingDateByServiceA {
 			return true;
 		return false;
 	}
-	StringBuilder sendShippingDate(ClientData clientData){
+	String sendShippingDate(ClientData clientData){
 		int postalCode = clientData.getPostalCode();
 		int dataOfArrival = clientData.getDateOfArrival();
 		
