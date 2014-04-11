@@ -16,7 +16,6 @@ public class InputOutputTest {
 	@Before
 	public void before() {
 		inputOutput = new InputOutput();
-
 		outputStream = new ByteArrayOutputStream();
 		PrintStream printStream = new PrintStream(outputStream);
 		inputOutput.setPrintStream(printStream);
@@ -24,6 +23,7 @@ public class InputOutputTest {
 
 	@Test
 	public void test文字Aを入力すると文字型でAが返ってくる() {
+
 		String inputString = "A";
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(
 				inputString.getBytes());
