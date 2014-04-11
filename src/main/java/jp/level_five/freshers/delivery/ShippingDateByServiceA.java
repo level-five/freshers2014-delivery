@@ -101,5 +101,13 @@ public class ShippingDateByServiceA {
 			return true;
 		return false;
 	}
+	StringBuilder sendShippingDate(ClientData clientData){
+		int postalCode = clientData.getPostalCode();
+		int dataOfArrival = clientData.getDateOfArrival();
+		
+		String timeZone = clientData.getTimeZone();
+		return preSendShippingDate(postalCode,dataOfArrival,timeZone);
+			
+	}
 
 }
