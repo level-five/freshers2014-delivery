@@ -145,7 +145,7 @@ public class ShippingDateByServiceBTest {
 	@Test(expected = RuntimeException.class)
 	public void test郵便番号が1で始まり2014年4月13日夕方が到着日に指定されたときに例外が返る() {
 		// 2014年4月13日は日曜
-		String sb = shippingDateByServiceB.preSendShippingDate(1, 20140413, "夕方");
+	    String sb = shippingDateByServiceB.preSendShippingDate(1, 20140413, "夕方");
 	}
 	@Test(expected = RuntimeException.class)
 	public void test郵便番号が1で始まり2014年4月29日夕方が到着日に指定されたときに例外が返る() {
@@ -162,8 +162,7 @@ public class ShippingDateByServiceBTest {
 	@Test(expected = RuntimeException.class)
 	public void test郵便番号が1で2014年4月29日夕方が到着日のデータが入ったClientDataのオブジェクトを受け取って2014年4月11日午前と2014年4月10日午後が返る(){
 		ClientData clientData = new ClientData("B", 1000000, 20140429, "夕方");
-		String sb = shippingDateByServiceB.sendShippingDate(clientData);
-			
+		String sb = shippingDateByServiceB.sendShippingDate(clientData);			
 	}
 	@Test
 	public void test郵便番号が1で2014年4月1日夕方が到着日のデータが入ったClientDataのオブジェクトを受け取って2014年4月1日午前と2014年3月31日午後が返る(){
