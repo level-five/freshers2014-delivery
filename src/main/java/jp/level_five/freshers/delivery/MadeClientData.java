@@ -1,11 +1,11 @@
 package jp.level_five.freshers.delivery;
 
 public class MadeClientData {
-	char shippingmethod = ' ';
+	String shippingmethod = " ";
 	int postalCode;
 	int dataOfArrival;
-	int timeZone;
-	void setShippingMethod(char c){
+	String timeZone = " ";
+	void setShippingMethod(String c){
 		shippingmethod = c;
 	}
 	void setpostalCode(int code){
@@ -14,4 +14,9 @@ public class MadeClientData {
 	void setdataOfArrival(int data){
 		dataOfArrival = data;
 	}
+	void settimeZone(String timezone){
+	    timeZone = timezone;
+	}
+	ClientData clientdata = new ClientData(shippingmethod, postalCode, dataOfArrival, timeZone);
+	
 }

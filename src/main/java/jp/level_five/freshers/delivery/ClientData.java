@@ -19,14 +19,17 @@ public class ClientData {
 	}
 	
 	public void checkShippingMethod() {
-		shippingMethod = shippingMethod.toUpperCase();
+	    
+	    shippingMethod = shippingMethod.toUpperCase();
+	    System.out.println(shippingMethod);
+	    
 		switch (shippingMethod) {
 		case "A":
 		case "B":
 		case "":
 			break;
 		default:
-			throw new RuntimeException("そのサービスは存在しません。");
+		  throw new RuntimeException("そのサービスは存在しません。");
 		}
 	}
 	

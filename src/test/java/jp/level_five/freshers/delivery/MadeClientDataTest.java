@@ -14,8 +14,8 @@ public class MadeClientDataTest {
 
 	@Test
 	public void test配送方法は初期値では空白が入っている() {
-		char a = madeClientData.shippingmethod;
-		assertEquals(a, ' ');
+		String a = madeClientData.shippingmethod;
+		assertEquals(a, " ");
 	}
 
 	@Test
@@ -30,14 +30,14 @@ public class MadeClientDataTest {
 	}
 	@Test
 	public void test時間帯の初期値は０が入っている() {
-		int d = madeClientData.timeZone;
-		assertEquals(d, 0);
+		String d = madeClientData.timeZone;
+		assertEquals(d, " ");
 	}
 	@Test
 	public void test配送方法に文字のAをセットすることができる(){
-		madeClientData.setShippingMethod('A');
-		char c = madeClientData.shippingmethod;
-		assertEquals(c, 'A');
+		madeClientData.setShippingMethod("A");
+		String c = madeClientData.shippingmethod;
+		assertEquals(c, "A");
 	}
 	@Test
 	public void test郵便番号に数字の1000000をセットすることができる(){
