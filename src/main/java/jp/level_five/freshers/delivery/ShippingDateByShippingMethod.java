@@ -34,5 +34,17 @@ public class ShippingDateByShippingMethod {
 	public ClientData createClientData(String shippingMethod, int postalCode, int dateOfArrival, String timeZone) {
 		return new ClientData(shippingMethod, postalCode, dateOfArrival, timeZone);
 	}
+	public String modeSelection(ClientData client){
+		String sendShippingDate = null;
+		switch(client.getShippingMethod()){
+		case "A": case "a":
+			sendShippingDate = new ShippingDateByServiceA().sendShippingDate(client);
+			break;
+		case "B": case "b":
+			sendShippingDate = new ShippingDateByServiceA().sendShippingDate(client);
+			break;
+		}
+		return sendShippingDate;
+	}
 
 }
