@@ -22,10 +22,14 @@ public class InputOutput {
 		printStream = stream;
 	}
 
+	public PrintStream getPrintStream() {
+		return printStream;
+	}
+
 	public String inputShippingMethod() {
 		printStream.format("配送方法を選択してください。　A　または　B");
 		String inputShippingMethod = scan.next();
-		
+
 		return inputShippingMethod;
 	}
 
@@ -47,36 +51,30 @@ public class InputOutput {
 		return inputTimeZone;
 	}
 	public void modeSelect(){
-	    printStream.format("使用したい機能を選択してください。\n 1: サービスの一覧を表示\n 2: 指定日時に届く発送日を調べる\n 3: 最も安い配送サービスを調べる");
-        
-	    int mode = this.inputMode();
-	    modeCreate(mode);
-  
-	    }
-	    
-	public void modeCreate(int mode){
-  
-	    if(mode == 1){
-	            String output = new ListDisplay().displayList();
-	            this.output(output);}
-	        else if(mode == 2){
+		printStream.format("使用したい機能を選択してください。\n 1: サービスの一覧を表示\n 2: 指定日時に届く発送日を調べる\n 3: 最も安い配送サービスを調べる");
 
-	            ShippingDateByShippingMethod service2 = new ShippingDateByShippingMethod(inputOutput);
-	                   
-	            String shippingDate = service2.inputClientData();
-	                this.output(shippingDate);
-	                
-	                
-	          }
+		int mode = this.inputMode();
+		modeCreate(mode);
 	}
-	
-	
+
+	public void modeCreate(int mode){
+		if(mode == 1){
+			String output = new ListDisplay().displayList();
+			this.output(output);}
+		else if(mode == 2){
+			ShippingDateByShippingMethod service2 = new ShippingDateByShippingMethod(inputOutput);
+
+			String shippingDate = service2.inputClientDataWithoutShippingMethod();
+			this.output(shippingDate);
+		}
+	}
+
 	public int inputMode() {
 		int inputMode = scan.nextInt();
 		System.out.println(inputMode);
 		return inputMode;
 	}
-	
+
 	public void output(String output) {
 		printStream.format(output);
 	}

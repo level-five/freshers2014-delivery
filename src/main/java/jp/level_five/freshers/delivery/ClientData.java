@@ -19,9 +19,7 @@ public class ClientData {
 	}
 	
 	public void checkShippingMethod() {
-	    
 	    shippingMethod = shippingMethod.toUpperCase();
-	    System.out.println(shippingMethod);
 	    
 		switch (shippingMethod) {
 		case "A":
