@@ -59,9 +59,9 @@ public class InputOutput {
 	            String output = new ListDisplay().displayList();
 	            this.output(output);}
 	        else if(mode == 2){
-	                MadeClientData madeClientData = new MadeClientData();
+	            ShippingDateByShippingMethod service2 = new ShippingDateByShippingMethod();
 	                System.out.println(this.inputShippingMethod());
-	                madeClientData.setShippingMethod(this.inputShippingMethod());
+	                (this.inputShippingMethod());
 	          }
 	}
 	

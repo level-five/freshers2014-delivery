@@ -36,7 +36,7 @@ public class InputOutputTest {
                 outputStream.toString());
     }
      @Test
-     public void test使用する機能2を選ぶと配送方法の入力が要求される() {
+     public void test使用する機能2を選ぶと配送データの入力が要求される() {
          String inputMode = "2\nA";
          ByteArrayInputStream inputStream = new ByteArrayInputStream(
                  inputMode.getBytes());
