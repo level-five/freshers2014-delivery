@@ -101,33 +101,33 @@ public class ShippingDateByServiceB extends ShippingDateByServiceA {
 				};
 
 		if(isHoliday(arrivalDate)){
-			throw new RuntimeException("到着指定日が日曜・祝日です");
+		    throw new RuntimeException("到着指定日が日曜・祝日です");
 		}
 		
 		if (1 <= postalCode && postalCode <= 4){
-			if(timeZone =="夕方"){
-				setShippingDateByCalendarSubstruction(arrival, 0, 1);
+			if(timeZone.equals("夕方")){
+				setShippingDateByCalendarSubstruction(arrival, 0, -1);
 				}
-			else if(timeZone =="午後"){
-				setShippingDateByCalendarSubstruction(arrival, 0, 1);
+			else if(timeZone.equals("午後")){
+				setShippingDateByCalendarSubstruction(arrival, 0, -1);
 				}
-			else if(timeZone=="午前"){
-				setShippingDateByCalendarSubstruction(arrival, 1, 1);
+			else if(timeZone.equals("午前")){
+				setShippingDateByCalendarSubstruction(arrival, -1, -1);
 				}
 			}
 		else if (5 <= postalCode && postalCode <= 8){
-			if(timeZone == "夕方"){
-				setShippingDateByCalendarSubstruction(arrival, 1, 1);
+			if(timeZone.equals("夕方")){
+				setShippingDateByCalendarSubstruction(arrival, -1, -1);
 			}
-			else if(timeZone =="午後"){
-				setShippingDateByCalendarSubstruction(arrival, 1, 2);
+			else if(timeZone.equals("午後")){
+				setShippingDateByCalendarSubstruction(arrival, -1, -2);
 			}
-			else if(timeZone =="午前"){
-				setShippingDateByCalendarSubstruction(arrival, 1, 2);
+			else if(timeZone.equals("午前")){
+				setShippingDateByCalendarSubstruction(arrival, -1, -2);
 				}
 			}
 		else if (postalCode == 9)
-			setShippingDateByCalendarSubstruction(arrival, 3, 3);
+			setShippingDateByCalendarSubstruction(arrival, -3, -3);
 		
 		StringBuilder shippingDateServiceB = new StringBuilder();
 
@@ -138,18 +138,26 @@ public class ShippingDateByServiceB extends ShippingDateByServiceA {
 	}
 	
 	private void setShippingDateByCalendarSubstruction(int[] shippingDate, int amSubstructionNumber, int pmSubstructionNumber) {
-		calendar.set(shippingDate[0], shippingDate[1] - 1, shippingDate[2]);
-		calendar.add(Calendar.DAY_OF_MONTH, -amSubstructionNumber);
+		calendar.set(shippingDate[0], shippingDate[1], shippingDate[2]);
+		calendar.add(Calendar.DAY_OF_MONTH, amSubstructionNumber);
 		
 		shippingDate[0] = calendar.get(Calendar.YEAR);
-		shippingDate[1] = calendar.get(Calendar.MONTH) + 1;
+		shippingDate[1] = calendar.get(Calendar.MONTH);
 		shippingDate[2] = calendar.get(Calendar.DATE);
 		
-		calendar.set(shippingDate[3], shippingDate[4] - 1, shippingDate[5]);
-		calendar.add(Calendar.DAY_OF_MONTH, -pmSubstructionNumber);
+		calendar.set(shippingDate[3], shippingDate[4], shippingDate[5]);
+		calendar.add(Calendar.DAY_OF_MONTH, pmSubstructionNumber);
 		
 		shippingDate[3] = calendar.get(Calendar.YEAR);
-		shippingDate[4] = calendar.get(Calendar.MONTH) + 1;
+		shippingDate[4] = calendar.get(Calendar.MONTH);
 		shippingDate[5] = calendar.get(Calendar.DATE);
 	}
+	String sendShippingDate(ClientData clientData){
+        int postalCode = clientData.getPostalCode();
+        int dataOfArrival = clientData.getDateOfArrival();
+        
+        String timeZone = clientData.getTimeZone();
+        return preSendShippingDate(postalCode,dataOfArrival,timeZone);
+            
+    }
 }

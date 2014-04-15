@@ -78,7 +78,7 @@ public class ShippingDateByShippingMethod {
         case "":
             sendShippingDate = new ShippingDateOfLowestCost()
             .preSendShippingDate(client);
-            System.out.println(sendShippingDate);
+         //   System.out.println(sendShippingDate);
             break;
         }
         return sendShippingDate;
