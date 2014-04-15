@@ -186,7 +186,7 @@ public class ShippingDateByServiceBTest {
 		assertEquals(str, sb.toString());	
 	}
 	@Test
-	public void test郵便番号が1で2014年4月17日午後が到着日のデータが入ったClientDataのオブジェクトを受け取って2014年4月17日午前と2014年4月16日午後が返る(){
+	public void test郵便番号が1で2014年4月17日午が到着日のデータが入ったClientDataのオブジェクトを受け取って2014年4月17日午前と2014年4月16日午後が返る(){
 		ClientData clientData = new ClientData("B", 1000000, 20140417, "午後");
 		String sb = shippingDateByServiceB.sendShippingDate(clientData);
 		String str = "2014年4月17日午前、2014年4月16日午後";
@@ -211,4 +211,3 @@ public class ShippingDateByServiceBTest {
 		assertEquals(str, sb.toString());
 	}
 }
-		
