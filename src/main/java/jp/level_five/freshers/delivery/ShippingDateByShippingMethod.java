@@ -9,6 +9,7 @@ public class ShippingDateByShippingMethod {
     public int dateOfArrival;
     public String timeZone;
     private InputOutput input;
+  //  private InputOutput output;
 
     // InputOutput input = new InputOutput();
 //     public void setInputStream(InputStream inputStream) {
@@ -31,7 +32,15 @@ public class ShippingDateByShippingMethod {
         return modeSelection(createClientData(shippingMethod, postalCode,
                 dateOfArrival, timeZone));
     }
+    public String inputClientData3() {
+        shippingMethod = "";
+        inputPostalCode();
+        inputDateOfArrival();
+        inputTimeZone();
 
+        return modeSelection(createClientData(shippingMethod, postalCode,
+                dateOfArrival, timeZone));
+    }
     public void inputShippingMethod() {
         shippingMethod = input.inputShippingMethod();
     }
@@ -56,6 +65,7 @@ public class ShippingDateByShippingMethod {
 
     public String modeSelection(ClientData client) {
         String sendShippingDate = null;
+        
         switch (client.getShippingMethod()) {
         case "A":
             sendShippingDate = new ShippingDateByServiceA()
@@ -64,6 +74,11 @@ public class ShippingDateByShippingMethod {
         case "B":
             sendShippingDate = new ShippingDateByServiceB()
                     .sendShippingDate(client);
+            break;
+        case "":
+            sendShippingDate = new ShippingDateOfLowestCost()
+            .preSendShippingDate(client);
+            System.out.println(sendShippingDate);
             break;
         }
         return sendShippingDate;

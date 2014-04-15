@@ -13,7 +13,7 @@ public class ShippingDateByServiceA {
 		StringBuilder sb = new StringBuilder();
 
 		if (postalCode < 8) {
-			if (string == "午前") {//郵便番号１〜７、午前のとき
+			if (string.equals("午前")) {//郵便番号１〜７、午前のとき
 				shippingDate[2] -= 1;
 				shippingDate[5] -= 2;
 			} else {//郵便番号１〜７、午後、夕方のとき
@@ -25,7 +25,7 @@ public class ShippingDateByServiceA {
 			if(shippingDate[5] < 1)
 				shippingDate = convertPrevPmMonthDay(shippingDate);
 		} else if (postalCode == 8) {
-			if (string == "午前") {//郵便番号８、午前のとき
+			if (string.equals("午前")) {//郵便番号８、午前のとき
 				shippingDate[2] -= 2;
 				shippingDate[5] -= 3;
 			} else if (string == "午後") {//郵便番号８、午後のとき
