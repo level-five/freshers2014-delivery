@@ -7,8 +7,8 @@ import java.util.Scanner;
 public class InputOutput {
 
 	private PrintStream printStream;
-	private Scanner scan ;
-
+	static private Scanner scan ;
+	static InputOutput inputOutput = new InputOutput();
 	public InputOutput() {
 		setInputStream(System.in);
 		setPrintStream(System.out);
@@ -61,7 +61,7 @@ public class InputOutput {
 	            this.output(output);}
 	        else if(mode == 2){
 
-	            ShippingDateByShippingMethod service2 = new ShippingDateByShippingMethod();
+	            ShippingDateByShippingMethod service2 = new ShippingDateByShippingMethod(inputOutput);
 	                   
 	            String shippingDate = service2.inputClientData();
 	                this.output(shippingDate);
