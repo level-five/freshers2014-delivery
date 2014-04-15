@@ -178,4 +178,37 @@ public class ShippingDateByServiceBTest {
 		String str = "2013年12月31日午前、2013年12月31日午後";
 		assertEquals(str, sb.toString());	
 	} 
+	@Test
+	public void test郵便番号が1で2014年4月17日午前が到着日のデータが入ったClientDataのオブジェクトを受け取って2014年4月16日午前と2014年4月16日午後が返る(){
+		ClientData clientData = new ClientData("B", 1000000, 20140417, "午前");
+		String sb = shippingDateByServiceB.sendShippingDate(clientData);
+		String str = "2014年4月16日午前、2014年4月16日午後";
+		assertEquals(str, sb.toString());	
+	}
+	@Test
+	public void test郵便番号が1で2014年4月17日午後が到着日のデータが入ったClientDataのオブジェクトを受け取って2014年4月17日午前と2014年4月16日午後が返る(){
+		ClientData clientData = new ClientData("B", 1000000, 20140417, "午後");
+		String sb = shippingDateByServiceB.sendShippingDate(clientData);
+		String str = "2014年4月17日午前、2014年4月16日午後";
+		assertEquals(str, sb.toString());	
+	}
+	@Test
+	public void test郵便番号が5で始まり2014年4月11日午後が到着日に指定されたときに2014年4月10日午前と2014年4月9日午後が返る(){
+		String sb = shippingDateByServiceB.preSendShippingDate(5, 20140411, "午後");
+		String str = "2014年4月10日午前、2014年4月9日午後";
+		assertEquals(str, sb.toString());
+	}
+	@Test
+	public void test郵便番号が5で始まり2014年4月11日午前が到着日に指定されたときに2014年4月10日午前と2014年4月10日午後が返る(){
+		String sb = shippingDateByServiceB.preSendShippingDate(5, 20140411, "午前");
+		String str = "2014年4月10日午前、2014年4月9日午後";
+		assertEquals(str, sb.toString());
+	}
+	@Test
+	public void test郵便番号が9で始まり2014年4月11日午後が到着日に指定されたときに2014年4月10日午前と2014年4月10日午後が返る(){
+		String sb = shippingDateByServiceB.preSendShippingDate(9, 20140411, "午後");
+		String str = "2014年4月8日午前、2014年4月8日午後";
+		assertEquals(str, sb.toString());
+	}
 }
+		

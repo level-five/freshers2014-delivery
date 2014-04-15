@@ -1,6 +1,8 @@
 package jp.level_five.freshers.delivery;
 
+
 import java.util.Calendar;
+
 
 public class ShippingDateByServiceB extends ShippingDateByServiceA {
 	Calendar calendar = Calendar.getInstance();
@@ -88,7 +90,7 @@ public class ShippingDateByServiceB extends ShippingDateByServiceA {
 			return false;
 		}
 	}
-	public String preSendShippingDate(int postalCode, int arrivalDate, String string) {
+	public String preSendShippingDate(int postalCode, int arrivalDate, String timeZone) {
 		int[] arrival = {
 				arrivalDate / 10000,		//amYear
 				arrivalDate % 10000 / 100,	//amMonth
@@ -102,10 +104,28 @@ public class ShippingDateByServiceB extends ShippingDateByServiceA {
 			throw new RuntimeException("到着指定日が日曜・祝日です");
 		}
 		
-		if (1 <= postalCode && postalCode <= 4)
-			setShippingDateByCalendarSubstruction(arrival, 0, 1);
-		else if (5 <= postalCode && postalCode <= 8)
-			setShippingDateByCalendarSubstruction(arrival, 1, 1);
+		if (1 <= postalCode && postalCode <= 4){
+			if(timeZone =="夕方"){
+				setShippingDateByCalendarSubstruction(arrival, 0, 1);
+				}
+			else if(timeZone =="午後"){
+				setShippingDateByCalendarSubstruction(arrival, 0, 1);
+				}
+			else if(timeZone=="午前"){
+				setShippingDateByCalendarSubstruction(arrival, 1, 1);
+				}
+			}
+		else if (5 <= postalCode && postalCode <= 8){
+			if(timeZone == "夕方"){
+				setShippingDateByCalendarSubstruction(arrival, 1, 1);
+			}
+			else if(timeZone =="午後"){
+				setShippingDateByCalendarSubstruction(arrival, 1, 2);
+			}
+			else if(timeZone =="午前"){
+				setShippingDateByCalendarSubstruction(arrival, 1, 2);
+				}
+			}
 		else if (postalCode == 9)
 			setShippingDateByCalendarSubstruction(arrival, 3, 3);
 		
