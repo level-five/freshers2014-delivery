@@ -55,13 +55,18 @@ public class InputOutput {
 	    }
 	    
 	public void modeCreate(int mode){
-	       if(mode == 1){
+  
+	    if(mode == 1){
 	            String output = new ListDisplay().displayList();
 	            this.output(output);}
 	        else if(mode == 2){
+
 	            ShippingDateByShippingMethod service2 = new ShippingDateByShippingMethod();
-	                System.out.println(this.inputShippingMethod());
-	                (this.inputShippingMethod());
+	                   
+	            String shippingDate = service2.inputClientData();
+	                this.output(shippingDate);
+	                
+	                
 	          }
 	}
 	

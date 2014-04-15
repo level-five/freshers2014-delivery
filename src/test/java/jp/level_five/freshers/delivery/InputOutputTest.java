@@ -37,7 +37,7 @@ public class InputOutputTest {
     }
      @Test
      public void test使用する機能2を選ぶと配送データの入力が要求される() {
-         String inputMode = "2\nA";
+         String inputMode = "2\nA\n1234567\n20140417\n午前";
          ByteArrayInputStream inputStream = new ByteArrayInputStream(
                  inputMode.getBytes());
          inputOutput.setInputStream(inputStream);
@@ -46,7 +46,7 @@ public class InputOutputTest {
          inputOutput.modeSelect();
    
          System.out.println(outputStream.toString());
-     assertEquals("使用したい機能を選択してください。\n 1: サービスの一覧を表示\n 2: 指定日時に届く発送日を調べる\n 3: 最も安い配送サービスを調べる配送方法を選択してください。　A　または　B", outputStream.toString());
+     assertEquals("使用したい機能を選択してください。\n 1: サービスの一覧を表示\n 2: 指定日時に届く発送日を調べる\n 3: 最も安い配送サービスを調べる配送方法を選択してください。　A　または　B郵便番号7桁を入力してください。希望される到着指定日を入力してください。　例）20140410希望される時間帯を選択してください。午前、午後、夕方2014年4月16日午前、2014年4月16日午後", outputStream.toString());
      }
 
 }
