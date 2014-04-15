@@ -156,7 +156,7 @@ public class ShippingDateByShippingMethodTest {
 				testClass.getTimeZone());
 		String sendShippingDate = testClass.modeSelection(clientData);
 		
-		assertEquals("2014年4月10日午前、2014年4月10日午後", sendShippingDate);
+		assertEquals("2014年4月10日午前、2014年4月9日午後", sendShippingDate);
 	}
 	@Test
 	public void test作成したオブジェクトをShippingDateByServiceBクラスに渡すと発送日を表示させる() {
@@ -173,7 +173,7 @@ public class ShippingDateByShippingMethodTest {
 				testClass.getTimeZone());
 		String sendShippingDate = testClass.modeSelection(clientData);
 		
-		assertEquals("2014年4月13日午前、2014年4月13日午後", sendShippingDate);
+		assertEquals("2014年4月13日午前、2014年4月12日午後", sendShippingDate);
 	}
 	@Test
 	public void test作成したオブジェクトをShippingDateOfLowestCostクラスに渡すと最安値の発送日が出力される() {
@@ -190,7 +190,7 @@ public class ShippingDateByShippingMethodTest {
 				testClass.getTimeZone());
 		String sendShippingDate = testClass.modeSelection(clientData);
 		
-		assertEquals("配送サービスB、2014年4月13日午前、2014年4月13日午後", sendShippingDate);
+		assertEquals("配送サービスB、2014年4月13日午前、2014年4月12日午後", sendShippingDate);
 	}
 	@Test
 	public void test文字列が出力されているかを確認するテスト() {

@@ -6,81 +6,86 @@ import java.util.Scanner;
 
 public class InputOutput {
 
-	private PrintStream printStream;
-	static private Scanner scan ;
-	static InputOutput inputOutput = new InputOutput();
-	public InputOutput() {
-		setInputStream(System.in);
-		setPrintStream(System.out);
-	}
+    private PrintStream printStream;
+    static private Scanner scan;
+    static InputOutput inputOutput = new InputOutput();
 
-	public void setInputStream(InputStream stream) {
-		scan = new Scanner(stream);
-	}
+    public InputOutput() {
+        setInputStream(System.in);
+        setPrintStream(System.out);
+    }
 
-	public void setPrintStream(PrintStream stream) {
-		printStream = stream;
-	}
+    public void setInputStream(InputStream stream) {
+        scan = new Scanner(stream);
+    }
 
-	public PrintStream getPrintStream() {
-		return printStream;
-	}
+    public void setPrintStream(PrintStream stream) {
+        printStream = stream;
+    }
 
-	public String inputShippingMethod() {
-		printStream.format("配送方法を選択してください。　A　または　B");
-		String inputShippingMethod = scan.next();
+    public String inputShippingMethod() {
+        printStream.format("配送方法を選択してください。　A　または　B");
+        String inputShippingMethod = scan.next();
 
-		return inputShippingMethod;
-	}
+        return inputShippingMethod;
+    }
 
-	public int inputPostalCode() {
-		printStream.format("郵便番号7桁を入力してください。");
-		int inputPostalCode = scan.nextInt();
-		
-		return inputPostalCode;
-	}
+    public int inputPostalCode() {
+        printStream.format("郵便番号7桁を入力してください。");
+        int inputPostalCode = scan.nextInt();
+        return inputPostalCode;
+    }
 
-	public int inputArrivalDate() {
-		printStream.format("希望される到着指定日を入力してください。　例）20140410");
-		int inputArrivalDate = scan.nextInt();
-		
-		return inputArrivalDate;
-	}
+    public int inputArrivalDate() {
+        printStream.format("希望される到着指定日を入力してください。　例）20140410");
+        int inputArrivalDate = scan.nextInt();
+        return inputArrivalDate;
+    }
 
-	public String inputTimeZone() {
-		printStream.format("希望される時間帯を選択してください。午前、午後、夕方");
-		String inputTimeZone = scan.next();
-		
-		return inputTimeZone;
-	}
-	public void modeSelect(){
-		printStream.format("使用したい機能を選択してください。\n 1: サービスの一覧を表示\n 2: 指定日時に届く発送日を調べる\n 3: 最も安い配送サービスを調べる");
+    public String inputTimeZone() {
+        printStream.format("希望される時間帯を選択してください。午前、午後、夕方");
+        String inputTimeZone = scan.next();
+        return inputTimeZone;
+    }
 
-		int mode = this.inputMode();
-		modeCreate(mode);
-	}
+    public void modeSelect() {
+        printStream
+                .format("使用したい機能を選択してください。\n 1: サービスの一覧を表示\n 2: 指定日時に届く発送日を調べる\n 3: 最も安い配送サービスを調べる");
 
-	public void modeCreate(int mode){
+        int mode = this.inputMode();
+        modeCreate(mode);
 
-		if(mode == 1){
-			String output = new ListDisplay().displayList();
-			this.output(output);}
-		else if(mode == 2){
-			ShippingDateByShippingMethod service2 = new ShippingDateByShippingMethod(inputOutput);
+    }
 
-			String shippingDate = service2.inputClientData();
-			this.output(shippingDate);
-		}
-	}
+    public void modeCreate(int mode) {
 
-	public int inputMode() {
-		int inputMode = scan.nextInt();
-		System.out.println(inputMode);
+        if (mode == 1) {
+            String output = new ListDisplay().displayList();
+            this.output(output);
+        } else if (mode == 2) {
 
-		return inputMode;
-	}
+            ShippingDateByShippingMethod service2 = new ShippingDateByShippingMethod(
+                    inputOutput);
 
-	public void output(String output) {
-		printStream.format(output);
-	}
+            String shippingDate = service2.inputClientData();
+            this.output(shippingDate);
+        } else if (mode == 3) {
+
+            ShippingDateByShippingMethod service2 = new ShippingDateByShippingMethod(
+                    inputOutput);
+
+            String shippingDate = service2.inputClientDataWithoutShippingMethod();
+            this.output(shippingDate);
+
+        }
+    }
+
+    public int inputMode() {
+        int inputMode = scan.nextInt();
+        return inputMode;
+    }
+
+    public void output(String output) {
+        printStream.format(output);
+    }
 }
