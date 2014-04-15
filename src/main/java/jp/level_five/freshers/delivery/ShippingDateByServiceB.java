@@ -138,18 +138,18 @@ public class ShippingDateByServiceB extends ShippingDateByServiceA {
 	}
 	
 	private void setShippingDateByCalendarSubstruction(int[] shippingDate, int amSubstructionNumber, int pmSubstructionNumber) {
-		calendar.set(shippingDate[0], shippingDate[1], shippingDate[2]);
+		calendar.set(shippingDate[0], shippingDate[1]-1, shippingDate[2]);
 		calendar.add(Calendar.DAY_OF_MONTH, amSubstructionNumber);
 		
 		shippingDate[0] = calendar.get(Calendar.YEAR);
-		shippingDate[1] = calendar.get(Calendar.MONTH);
+		shippingDate[1] = calendar.get(Calendar.MONTH)+1;
 		shippingDate[2] = calendar.get(Calendar.DATE);
 		
-		calendar.set(shippingDate[3], shippingDate[4], shippingDate[5]);
+		calendar.set(shippingDate[3], shippingDate[4]-1, shippingDate[5]);
 		calendar.add(Calendar.DAY_OF_MONTH, pmSubstructionNumber);
 		
 		shippingDate[3] = calendar.get(Calendar.YEAR);
-		shippingDate[4] = calendar.get(Calendar.MONTH);
+		shippingDate[4] = calendar.get(Calendar.MONTH)+1;
 		shippingDate[5] = calendar.get(Calendar.DATE);
 	}
 	String sendShippingDate(ClientData clientData){

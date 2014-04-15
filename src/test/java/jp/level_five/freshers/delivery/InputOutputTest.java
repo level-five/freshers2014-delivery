@@ -79,13 +79,9 @@ public class InputOutputTest {
 		ByteArrayInputStream inputStream = new ByteArrayInputStream(
 				inputMode.getBytes());
 
-
 		inputOutput.setInputStream(inputStream);
 		int input = inputOutput.inputMode();
 		assertEquals(1, input);
-		assertEquals(
-				"使用したい機能を選択してください。\n 1: サービスの一覧を表示\n 2: 指定日時に届く発送日を調べる\n 3: 最も安い配送サービスを調べる",
-				outputStream.toString());
 	}
 
 
